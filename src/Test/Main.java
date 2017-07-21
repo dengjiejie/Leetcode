@@ -13,13 +13,13 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		List<Integer> haha = new ArrayList<Integer>();
-		haha.add(1);
-		System.out.println(haha.contains(1));
+//		List<Integer> haha = new ArrayList<Integer>();
+//		haha.add(1);
+//		System.out.println(haha.contains(1));
 		
 		
 		
-		
+		name();
 		
 		
 		
@@ -55,4 +55,25 @@ public class Main {
 		 
 		 return list2;    
 	 }
+	 
+	 public static void name() {
+		int[] a = {1,3,5};
+		int sum = 20;
+		int[] dp = new int[21];  
+		dp[0] = 0;  
+		for(int i = 1; i <= sum; i++) dp[i] = i;//我们假设存在1元的硬币那么i元最多只需要i枚1元硬币，当然最好设置dp[i]等于无穷大  
+		for(int i = 1; i <= sum; i++){  
+			for(int j = 0; j < 3; j++){  
+				if(i >= a[j] && dp[i - a[j]] + 1 < dp[i]){  
+					dp[i] = dp[i- a[j] ] + 1;  
+		        }  
+		    }  
+			System.out.println(dp[i]);
+
+		}  
+		System.out.println(dp[sum]);
+	}
+	 
+	 
+	 
 }
