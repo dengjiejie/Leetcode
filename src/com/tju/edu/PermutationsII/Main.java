@@ -1,6 +1,7 @@
-package com.tju.edu.Permutations;
+package com.tju.edu.PermutationsII;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -11,14 +12,13 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] height = {2,3,4,1,5,1};
-		System.out.println(permute(height));
+		int[] height = {1,1,2,1};
+		System.out.println(permuteUnique(height));
 	}
-	
-	
-	public static List<List<Integer>> permute(int[] nums) {
+	public static List<List<Integer>> permuteUnique(int[] nums) {
         List<Integer> num = new ArrayList<Integer>();
         int len = nums.length;
+        Arrays.sort(nums);
         for(int i = 0; i < len; i++){
             num.add(nums[i]);
         }
@@ -35,6 +35,7 @@ public class Main {
         int len = num.size();
         
         for(int i = 0 ; i < len; i++){
+        	if(i > 0 && num.get(i) == num.get(i-1))continue;
             result.add(num.get(i));
             num.remove(i);
             helper(list, num ,result);
@@ -44,13 +45,5 @@ public class Main {
         return list;   
     }
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	 
 }

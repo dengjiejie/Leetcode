@@ -8,21 +8,17 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] height = {-2,1,-3,4,-1,2,1,-5,4};
-		System.out.println(maxSubArray(height));
+		int[] height = {3,2,1,0,4};
+		System.out.println(canJump(height));
 	}
 
 	
-	public static int maxSubArray(int[] nums) {
-		if(nums==null || nums.length==0)  
-	        return 0;  
-	    int global = nums[0];  
-	    int local = nums[0];  
-	    for(int i=1;i<nums.length;i++)  
-	    {  
-	        local = Math.max(nums[i],local+nums[i]); // 怎么找局部最大
-	        global = Math.max(local,global);  
-	    }  
-	    return global;  
-    }
+	public static boolean canJump(int[] nums) {
+		int n  = nums.length - 1;
+		for(int i = n - 1; i >= 0; i-- ){
+			if(nums[i] >= n - i)n = i;
+		}
+		if(n != 0)return false;
+		return true;     
+	}
 }
